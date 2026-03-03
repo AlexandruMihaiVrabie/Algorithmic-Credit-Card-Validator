@@ -1,53 +1,53 @@
-# Algorithmic-Credit-Card-Validator
+# Credit Card Validator (Luhn Algorithm)
 
-Un script Python simplu, robust și eficient pentru validarea numerelor de carduri de credit. Acest proiect implementează **Algoritmul Luhn** (cunoscut și sub denumirea de algoritmul *Modulus 10*), o formulă de sumă de control utilizată la nivel global pentru a valida o varietate de numere de identificare, în special numerele cardurilor bancare, pentru a preveni erorile accidentale de tastare.
+A simple, robust, and efficient Python script for validating credit card numbers. This project implements the **Luhn Algorithm** (also known as the *Modulus 10* algorithm), a widely used checksum formula to validate a variety of identification numbers, especially bank card numbers, to prevent accidental typing errors.
 
-## 🚀 Caracteristici
+## 🚀 Features
 
-* **Procesare Flexibilă a Inputului:** Funcția `verify_card_number` filtrează automat caracterele non-numerice. Indiferent dacă numărul cardului este introdus legat (`4111111111111111`), separat prin spații (`1234 5678 9012 3456`) sau delimitat de cratime (`4111-1111-1111-1111`), scriptul va extrage și procesa corect doar cifrele.
-* **Zero Dependențe:** Codul este scris exclusiv folosind elemente *built-in* din Python. Nu necesită instalarea unor pachete sau biblioteci externe.
-* **Evaluare Rapidă:** Utilizează operații matematice de bază și structuri de date native pentru a returna instant un verdict clar (`VALID!` sau `INVALID!`).
+* **Flexible Input Processing:** The `verify_card_number` function automatically filters out non-numeric characters. Whether the card number is entered as a continuous string (`4111111111111111`), separated by spaces (`1234 5678 9012 3456`), or delimited by dashes (`4111-1111-1111-1111`), the script will accurately extract and process only the digits.
+* **Zero Dependencies:** The code is written entirely using built-in Python features. No external packages or libraries are required.
+* **Fast Evaluation:** It utilizes basic mathematical operations and native data structures to instantly return a clear verdict (`VALID!` or `INVALID!`).
 
-## 🧠 Cum funcționează Algoritmul Luhn în acest script?
+## 🧠 How the Luhn Algorithm Works Here
 
-Pentru a stabili dacă un număr este valid, scriptul urmează acești pași logici direct pe lista de cifre extrase:
-1. Parcurge lista de cifre de la dreapta la stânga.
-2. Dublează valoarea fiecărei a doua cifre, începând cu penultima.
-3. Dacă rezultatul dublării depășește valoarea de 9, scade 9 din rezultat (acest lucru este echivalent matematic cu adunarea cifrelor produsului, de ex: `7 * 2 = 14`, iar `14 - 9 = 5`).
-4. Adună toate cifrele (atât cele dublate/ajustate, cât și cele rămase intacte).
-5. Dacă suma totală este perfect divizibilă cu 10 (adică `suma % 10 == 0`), atunci numărul cardului este **VALID!**.
+To determine if a number is valid, the script follows these logical steps directly on the list of extracted digits:
+1. Iterates through the list of digits from right to left.
+2. Doubles the value of every second digit, starting from the second-to-last one.
+3. If the doubled value is greater than 9, it subtracts 9 from the result (this is mathematically equivalent to adding the digits of the product together, e.g., `7 * 2 = 14`, and `14 - 9 = 5`).
+4. Sums up all the digits (both the doubled/adjusted ones and the untouched ones).
+5. If the total sum is perfectly divisible by 10 (i.e., `sum % 10 == 0`), the card number is **VALID!**.
 
-## 🛠️ Cerințe și Rulare
+## 🛠️ Requirements & Running
 
-Acest proiect necesită doar **Python 3.x** instalat pe sistemul tău.
+This project only requires **Python 3.x** installed on your system.
 
-1. Clonează acest repository sau descarcă fișierul `credit_card_validator.py`.
-2. Deschide un terminal sau un command prompt.
-3. Navighează în folderul unde se află fișierul și rulează comanda:
+1. Clone this repository or download the `credit_card_validator.py` file.
+2. Open a terminal or command prompt.
+3. Navigate to the folder containing the file and run the following command:
 
 ```bash
 python credit_card_validator.py
 ```
 
-## 💻 Exemplu de Cod și Utilizare
+## 💻 Code Example & Usage
 
-Poți folosi acest script fie prin rularea lui directă, fie importând funcția în propriul tău proiect:
+You can use this script either by running it directly or by importing the function into your own project:
 
 ```python
-# Exemplu de apelare a funcției
+# Function call examples
 
-print(verify_card_number("453914889"))             # Cifră de test aleatorie
-print(verify_card_number("4111-1111-1111-1111"))   # Format cu cratime
-print(verify_card_number("1234 5678 9012 3456"))   # Format cu spații
+print(verify_card_number("453914889"))             # Random test number
+print(verify_card_number("4111-1111-1111-1111"))   # Dashed format
+print(verify_card_number("1234 5678 9012 3456"))   # Spaced format
 ```
 
-**Output așteptat:**
+**Expected Output:**
 ```text
 INVALID!
 VALID!
 INVALID!
 ```
 
-## 🤝 Contribuții
+## 🤝 Contributing
 
-Contribuțiile sunt binevenite! Dacă ai idei pentru a extinde acest script (de exemplu, adăugarea suportului pentru identificarea emitentului cardului – Visa, Mastercard, American Express etc.), simte-te liber să faci un *fork* al acestui repository și să deschizi un *Pull Request*.
+Contributions are always welcome! If you have ideas to extend this script (for example, adding support to identify the card issuer like Visa, Mastercard, American Express based on the prefix), feel free to fork this repository and open a Pull Request.
